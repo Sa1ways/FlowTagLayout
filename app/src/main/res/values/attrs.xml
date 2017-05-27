@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DynamicTextView">
+        <attr name="DynamicColor" format="color"></attr>
+        <attr name="BaseColor" format="color"></attr>
+    </declare-styleable>
+    <declare-styleable name="BadgeTextView">
+        <attr name="backgroundColor" format="color"/>
+        <attr name="textColor" format="color"/>
+        <attr name="text" format="string"/>
+        <attr name="textSize" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="FlowTagsLayout">
+        <attr name="TagPaddingLeftRight" format="dimension"/>
+        <attr name="TagPaddingTopBottom" format="dimension"/>
+        <attr name="TagMarginTopBottom" format="dimension"/>
+        <attr name="TagMarginLeftRight" format="dimension"/>
+        <attr name="TagDefaultDrawable" format="integer"/>
+        <attr name="TagSelectedDrawable" format="integer"/>
+        <attr name="TagTextColor" format="color"/>
+        <attr name="TagSelectColor" format="color"/>
+        <attr name="SelectMode" format="enum">
+            <enum name="click" value="0"/>
+            <enum name="single" value="1"/>
+            <enum name="multi" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>

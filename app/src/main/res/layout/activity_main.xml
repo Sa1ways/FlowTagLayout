@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.shawn.flowtaglayouttest.MainActivity">
+
+    <com.example.shawn.flowtaglayouttest.FlowTagsLayout
+        android:id="@+id/layout_flow"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp"
+        app:SelectMode="multi"
+        app:TagDefaultDrawable="@drawable/bg_normal"
+        app:TagSelectedDrawable="@drawable/bg_selected"
+        app:TagTextColor="@android:color/holo_blue_bright">
+
+    </com.example.shawn.flowtaglayouttest.FlowTagsLayout>
+
+</android.support.constraint.ConstraintLayout>
