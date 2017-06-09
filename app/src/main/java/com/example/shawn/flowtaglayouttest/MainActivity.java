@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements FlowTagsLayout.OnTagChosenCallback, FlowTagsLayout.OnTagClickCallback {
-
+    public static final String TAG ="MainActivityTEst";
     public static final String[] TAG_ITEM_TITLE={"PDD","全英雄联盟","最骚的","骚猪","没有之一","PDD的洪荒之力" +
             "我并不是全英雄联盟最骚的骚猪",
     "AlphaGo","Artificial Intelligent","Deep Mind","人机大战","柯杰加油"};
@@ -38,6 +38,18 @@ public class MainActivity extends AppCompatActivity implements FlowTagsLayout.On
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.options_menu,menu);
         return true;
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        Log.i(TAG, "onWindowFocusChanged: ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "onResume: ");
     }
 
     /**

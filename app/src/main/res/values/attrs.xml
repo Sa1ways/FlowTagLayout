@@ -15,8 +15,8 @@
         <attr name="TagPaddingTopBottom" format="dimension"/>
         <attr name="TagMarginTopBottom" format="dimension"/>
         <attr name="TagMarginLeftRight" format="dimension"/>
-        <attr name="TagDefaultDrawable" format="integer"/>
-        <attr name="TagSelectedDrawable" format="integer"/>
+        <attr name="TagDefaultDrawable" format="reference"/>
+        <attr name="TagSelectedDrawable" format="reference"/>
         <attr name="TagTextColor" format="color"/>
         <attr name="TagSelectColor" format="color"/>
         <attr name="SelectMode" format="enum">

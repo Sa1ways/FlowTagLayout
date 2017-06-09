@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,6 +24,7 @@ import java.util.List;
 public class FlowTagsLayout extends ViewGroup implements View.OnTouchListener {
 
     public static final String TAG="FlowLayout";
+
     public static final int MODE_CLICK=0;
     public static final int MODE_SINGLE=1;
     public static final int MODE_MULTI=2;
@@ -33,13 +35,14 @@ public class FlowTagsLayout extends ViewGroup implements View.OnTouchListener {
     private int mTagMarginTopBottom;
     private int mTagPaddingTopBottom;
     private int mSelectMode;
-    private Drawable mDefaultDrawable;
-    private Drawable mSelectedDrawable;
+    private int mDefaultDrawableRes;
+    private int mSelectedDrawableRes;
     private int mTagTextColor;
     private int mTagSelectedColor;
     private List<Boolean> mSelectedList=new ArrayList<>();
     public OnTagClickCallback mOnTagClickCallback;
     public OnTagChosenCallback mOnTagChosenCallback;
+    private boolean sMeasured = false;
 
     public FlowTagsLayout(Context context) {
         this(context,null);
@@ -60,8 +63,8 @@ public class FlowTagsLayout extends ViewGroup implements View.OnTouchListener {
         mTagPaddingTopBottom=array.getDimensionPixelSize(R.styleable.FlowTagsLayout_TagPaddingTopBottom,dp2px(5));
         mTagMarginLeftRight=array.getDimensionPixelSize(R.styleable.FlowTagsLayout_TagMarginLeftRight,dp2px(5));
         mTagMarginTopBottom=array.getDimensionPixelSize(R.styleable.FlowTagsLayout_TagMarginTopBottom,dp2px(5));
-        mDefaultDrawable=array.getDrawable(R.styleable.FlowTagsLayout_TagDefaultDrawable);
-        mSelectedDrawable=array.getDrawable(R.styleable.FlowTagsLayout_TagSelectedDrawable);
+        mDefaultDrawableRes=array.getResourceId(R.styleable.FlowTagsLayout_TagDefaultDrawable,0);
+        mSelectedDrawableRes=array.getResourceId(R.styleable.FlowTagsLayout_TagSelectedDrawable,0);
         mSelectMode=array.getInt(R.styleable.FlowTagsLayout_SelectMode,0);
         mTagTextColor=array.getColor(R.styleable.FlowTagsLayout_TagTextColor,Color.GRAY);
         mTagSelectedColor=array.getColor(R.styleable.FlowTagsLayout_TagSelectColor,Color.WHITE);
@@ -72,12 +75,12 @@ public class FlowTagsLayout extends ViewGroup implements View.OnTouchListener {
     }
 
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
         int widthSize=MeasureSpec.getSize(widthMeasureSpec);
         int heightMode=MeasureSpec.getMode(heightMeasureSpec);
         int heightSize=MeasureSpec.getSize(heightMeasureSpec);
         if(heightMode==MeasureSpec.EXACTLY){
-             setMeasuredDimension(widthSize,heightSize);
+            setMeasuredDimension(widthSize,heightSize);
         }else {
             //这里默认AT_MOST
             int height=0;
@@ -232,11 +235,11 @@ public class FlowTagsLayout extends ViewGroup implements View.OnTouchListener {
     private void setTagState(TextView v, int action){
         switch (action){
             case ACTION_NORMAL:
-                v.setBackground(mDefaultDrawable);
+                v.setBackgroundResource(mDefaultDrawableRes);
                 v.setTextColor(mTagTextColor);
                 break;
             case ACTION_PRESSED:
-                v.setBackground(mSelectedDrawable);
+                v.setBackgroundResource(mSelectedDrawableRes);
                 v.setTextColor(mTagSelectedColor);
                 break;
         }
